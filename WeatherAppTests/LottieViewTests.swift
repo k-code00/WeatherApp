@@ -2,7 +2,7 @@
 //  LottieViewTests.swift
 //  WeatherAppTests
 //
-//  Created by Consultant on 25/10/2023.
+//  Created by Kojo on 25/10/2023.
 //
 
 import XCTest

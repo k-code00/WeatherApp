@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		027F6C082AE998A6003C7607 /* LottieViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F6C072AE998A6003C7607 /* LottieViewTests.swift */; };
+		027F6C0A2AE99BD9003C7607 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027F6C092AE99BD9003C7607 /* NetworkManagerTests.swift */; };
 		028A2C2D2AE811B00080E897 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C2C2AE811B00080E897 /* WeatherAppApp.swift */; };
 		028A2C2F2AE811B00080E897 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C2E2AE811B00080E897 /* ContentView.swift */; };
 		028A2C312AE811B30080E897 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 028A2C302AE811B30080E897 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		027F6C072AE998A6003C7607 /* LottieViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewTests.swift; sourceTree = "<group>"; };
+		027F6C092AE99BD9003C7607 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		028A2C292AE811B00080E897 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		028A2C2C2AE811B00080E897 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		028A2C2E2AE811B00080E897 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				028A2C3D2AE811B30080E897 /* WeatherAppTests.swift */,
 				027F6C072AE998A6003C7607 /* LottieViewTests.swift */,
+				027F6C092AE99BD9003C7607 /* NetworkManagerTests.swift */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				027F6C0A2AE99BD9003C7607 /* NetworkManagerTests.swift in Sources */,
 				028A2C3E2AE811B30080E897 /* WeatherAppTests.swift in Sources */,
 				027F6C082AE998A6003C7607 /* LottieViewTests.swift in Sources */,
 			);

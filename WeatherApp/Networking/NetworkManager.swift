@@ -55,9 +55,26 @@ final class NetworkManager<T: Decodable> {
 }
 
 // Enum to define possible network errors.
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case invalidResponse
     case invalidData
     case error(err: String)
     case decodingError(err: String)
 }
+
+extension NetworkError {
+    static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidResponse, .invalidResponse),
+             (.invalidData, .invalidData):
+            return true
+        case (.error(let lhsErr), .error(let rhsErr)):
+            return lhsErr == rhsErr
+        case (.decodingError(let lhsErr), .decodingError(let rhsErr)):
+            return lhsErr == rhsErr
+        default:
+            return false
+        }
+    }
+}
+
