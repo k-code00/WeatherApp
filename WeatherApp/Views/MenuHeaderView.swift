@@ -13,8 +13,8 @@ struct MenuHeaderView: View {
     
     var body: some View {
         HStack {
-            TextField("Search for a city...", onCommit: {
-                cityViewModel.city = searchTerm
+            TextField("Search for a city...", text: $searchTerm, onCommit: {
+                cityViewModel.searchCity(name: searchTerm)
             })
             .padding(10)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white.opacity(0.1)))
@@ -24,11 +24,11 @@ struct MenuHeaderView: View {
             .padding(.leading, 20)
             
             Button(action: {
-                cityViewModel.city = searchTerm
+                cityViewModel.searchCity(name: searchTerm)
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.blue)
+                        .fill(Color.gray)
                     
                     Image(systemName: "location.fill")
                         .foregroundColor(.white)
@@ -37,8 +37,12 @@ struct MenuHeaderView: View {
             .frame(width: 50, height: 50)
         }
         .padding()
-        .background(Color.blue.opacity(0.5))
+        .background(Color.white.opacity(0.5))
         .cornerRadius(10)
         .padding(.horizontal)
     }
 }
+
+//#Preview {
+//    MenuHeaderView()
+//}

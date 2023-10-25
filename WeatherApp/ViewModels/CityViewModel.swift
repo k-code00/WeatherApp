@@ -19,7 +19,7 @@ final class CityViewModel: ObservableObject {
     @Published var isRefreshing: Bool = false
     
     // City name
-    @Published var city: String = "Atlanta" {
+    @Published var city: String = "" {
         didSet {
             refreshWeather()
         }
@@ -239,5 +239,24 @@ final class CityViewModel: ObservableObject {
             return Image(systemName: "sun.max.fill")
         }
     }
-    
 }
+
+extension CityViewModel {
+    func searchCity(name: String) {
+        CLGeocoder().geocodeAddressString(name) { (placemarks, error) in
+            if let error = error {
+                print("Geocoding error: \(error.localizedDescription)")
+                return
+            }
+            if let places = placemarks, let place = places.first, let coord = place.location?.coordinate {
+                self.getWeather(coord: coord)
+            } else {
+                print("Failed to get coordinates for city.")
+                // Handle the error or fallback to a default coordinate
+                self.getWeather(coord: nil)
+            }
+        }
+    }
+}
+
+
