@@ -33,6 +33,7 @@
 		028A2C7E2AE944B90080E897 /* raindrop.json in Resources */ = {isa = PBXBuildFile; fileRef = 028A2C7D2AE944B90080E897 /* raindrop.json */; };
 		028A2C802AE9463B0080E897 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */; };
 		028A2C822AE948A20080E897 /* CityNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C812AE948A20080E897 /* CityNameView.swift */; };
+		028A2C842AE949C30080E897 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C832AE949C30080E897 /* TodayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		028A2C7D2AE944B90080E897 /* raindrop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = raindrop.json; sourceTree = "<group>"; };
 		028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		028A2C812AE948A20080E897 /* CityNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameView.swift; sourceTree = "<group>"; };
+		028A2C832AE949C30080E897 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				028A2C702AE8EF050080E897 /* LottieView.swift */,
 				028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */,
 				028A2C812AE948A20080E897 /* CityNameView.swift */,
+				028A2C832AE949C30080E897 /* TodayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				028A2C642AE847880080E897 /* Weather.swift in Sources */,
 				028A2C6A2AE847C80080E897 /* Temperature.swift in Sources */,
 				028A2C682AE847B80080E897 /* DailyWeather.swift in Sources */,
+				028A2C842AE949C30080E897 /* TodayView.swift in Sources */,
 				028A2C712AE8EF050080E897 /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
