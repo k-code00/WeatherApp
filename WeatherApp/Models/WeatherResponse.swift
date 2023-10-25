@@ -9,5 +9,6 @@ import Foundation
 
 struct WeatherResponse: Codable {
     var current: Weather
+    var hourly: [Weather]
     
 }

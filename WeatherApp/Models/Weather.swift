@@ -19,7 +19,7 @@ struct Weather: Codable, Identifiable {
     var wind_deg: Int
     var weather: [WeatherDetail]
     
-    enum CodingKeys: String, CodingKey {
+    enum CodingKey: String {
         case dt
         case temp
         case pressure
@@ -38,6 +38,7 @@ struct Weather: Codable, Identifiable {
         feel_like = 0.0
         pressure = 0
         humidity = 0
+        dew_point = 0.0
         clouds = 0
         wind_speed = 0
         wind_deg = 0
