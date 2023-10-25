@@ -32,6 +32,7 @@
 		028A2C7C2AE9445E0080E897 /* clear-day.json in Resources */ = {isa = PBXBuildFile; fileRef = 028A2C7B2AE9445E0080E897 /* clear-day.json */; };
 		028A2C7E2AE944B90080E897 /* raindrop.json in Resources */ = {isa = PBXBuildFile; fileRef = 028A2C7D2AE944B90080E897 /* raindrop.json */; };
 		028A2C802AE9463B0080E897 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */; };
+		028A2C822AE948A20080E897 /* CityNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028A2C812AE948A20080E897 /* CityNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		028A2C7B2AE9445E0080E897 /* clear-day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "clear-day.json"; sourceTree = "<group>"; };
 		028A2C7D2AE944B90080E897 /* raindrop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = raindrop.json; sourceTree = "<group>"; };
 		028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		028A2C812AE948A20080E897 /* CityNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			children = (
 				028A2C702AE8EF050080E897 /* LottieView.swift */,
 				028A2C7F2AE9463B0080E897 /* MenuHeaderView.swift */,
+				028A2C812AE948A20080E897 /* CityNameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			files = (
 				028A2C5E2AE838920080E897 /* apiExtension.swift in Sources */,
 				028A2C6C2AE8DA380080E897 /* CityViewModel.swift in Sources */,
+				028A2C822AE948A20080E897 /* CityNameView.swift in Sources */,
 				028A2C662AE8479B0080E897 /* WeatherDetail.swift in Sources */,
 				028A2C622AE8472A0080E897 /* WeatherResponse.swift in Sources */,
 				028A2C2F2AE811B00080E897 /* ContentView.swift in Sources */,
