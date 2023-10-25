@@ -15,12 +15,24 @@ final class CityViewModel: ObservableObject {
     // Weather data for the city
     @Published var weather = WeatherResponse.empty()
     
+    // Indicates if refresh is in progress
+    @Published var isRefreshing: Bool = false
+    
     // City name
     @Published var city: String = "Atlanta" {
         didSet {
-            
+            refreshWeather()
         }
     }
+    
+    func refreshWeather() {
+            isRefreshing = true
+            getLocation()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.isRefreshing = false
+            }
+        }
     
     // DateFormatter for displaying the full date.
     private lazy var dateFormatter: DateFormatter = {
@@ -45,7 +57,8 @@ final class CityViewModel: ObservableObject {
     
     // Initializer
     init() {
-
+        refreshWeather()
+        getLocation()
     }
     
     // Computed property to get the date string.
@@ -133,7 +146,7 @@ final class CityViewModel: ObservableObject {
                     self.weather = response
                 }
                 
-            case .failure(let err ):
+            case .failure(let err):
                 print(err)
             }
         }
@@ -143,43 +156,43 @@ final class CityViewModel: ObservableObject {
     func getLottieAnimationFor(icon: String) -> String {
         switch icon {
         case "01d":
-            return "dayClearSky"
+            return "clear-day"
         case "01n":
-            return "nightClearSky"
+            return "clear-night"
         case "02d":
-            return "dayFewClouds"
+            return "cloudy"
         case "02n":
-            return "nightFewClouds"
+            return "cloudy"
         case "03d":
-            return "dayScatteredClouds"
+            return "overcast-day"
         case "03n":
-            return "nightScatteredClouds"
+            return "overcast-night"
         case "04d":
-            return "dayBrokenClouds"
+            return "overcast-day"
         case "04n":
-            return "nightBrokenClouds"
+            return "overcast-night"
         case "09d":
-            return "dayShoweredRains"
+            return "raindrop"
         case "09n":
-            return "nightShoweredRains"
+            return "raindrop"
         case "10d":
-            return "dayRain"
+            return "raindrop"
         case "10n":
-            return "nightRain"
+            return "raindrop"
         case "11d":
-            return "dayThunderStorm"
+            return "thunderstorm-day"
         case "11n":
-            return "nightThunderStorm"
+            return "thunderstorm-night"
         case "13d":
-            return "daySnow"
+            return "overcast-day"
         case "13n":
-            return "nightSnow"
+            return "overcast-night"
         case "50d":
-            return "dayMist"
+            return "overcast-day"
         case "50n":
-            return "nightMist"
+            return "overcast-night"
         default:
-            return "dayClearSky"
+            return "clear-day"
         }
     }
     
