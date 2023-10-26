@@ -32,7 +32,6 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         super.init()
         setupLocationManager()
         refreshWeather()
-        getLocation()
     }
     
     // Setup location manager
@@ -42,7 +41,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
+    
     // CLLocationManagerDelegate method for location updates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -50,20 +49,40 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
             getWeather(coord: location.coordinate)
         }
     }
-
+    
     // CLLocationManagerDelegate method for handling errors
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to find user's location: \(error.localizedDescription)")
     }
     
+    // Refresh weather data and update to current location
     func refreshWeather() {
-            isRefreshing = true
-            getLocation()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.isRefreshing = false
-            }
+        isRefreshing = true
+        requestCurrentLocation()
+    }
+    
+    // Request the current location
+    private func requestCurrentLocation() {
+        if !CLLocationManager.locationServicesEnabled() {
+            print("Location services are not enabled")
+            isRefreshing = false
+            return
         }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                manager.startUpdatingLocation()
+            case .notDetermined, .restricted, .denied:
+                // Handle cases where location services are not authorized
+                print("Location services not authorized")
+                isRefreshing = false
+            @unknown default:
+                print("Unknown authorization status")
+                isRefreshing = false
+        }
+    }
     
     // DateFormatter for displaying the full date.
     private lazy var dateFormatter: DateFormatter = {
@@ -85,7 +104,7 @@ final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         formatter.dateFormat = "hh a"
         return formatter
     }()
-
+    
     // Computed property to get the date string.
     var date: String {
         return dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.dt)))
@@ -277,7 +296,6 @@ extension CityViewModel {
                 self.getWeather(coord: coord)
             } else {
                 print("Failed to get coordinates for city.")
-                // Handle the error or fallback to a default coordinate
                 self.getWeather(coord: nil)
             }
         }

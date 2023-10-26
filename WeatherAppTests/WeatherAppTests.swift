@@ -45,17 +45,21 @@ class CityViewModelTests: XCTestCase {
     }
 
     func testRefreshing() {
+        XCTAssertFalse(viewModel.isRefreshing, "ViewModel should not be refreshing initially")
         viewModel.refreshWeather()
-        XCTAssertTrue(viewModel.isRefreshing)
+        XCTAssertTrue(viewModel.isRefreshing, "ViewModel should be refreshing after calling refreshWeather")
     }
 
     func testCityChangeTriggersRefresh() {
+        let initialRefreshing = viewModel.isRefreshing
         viewModel.city = "New York"
+        XCTAssertTrue(viewModel.isRefreshing && !initialRefreshing, "Changing city should trigger refreshing")
     }
 
     func testWeatherIconMapping() {
-        viewModel.weather = mockWeatherData(icon: "someIcon")
-        XCTAssertEqual(viewModel.weatherIcon, "ExpectedIconString")
+        let icon = "01d"
+        viewModel.weather = mockWeatherData(icon: icon)
+        XCTAssertEqual(viewModel.weatherIcon, "ExpectedIconStringFor01d")
     }
 
     func testTemperature() {
