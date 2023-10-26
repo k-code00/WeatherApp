@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-// View Model to manage and update the weather information for a city.
-final class CityViewModel: ObservableObject {
+final class CityViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // Weather data for the city
     @Published var weather = WeatherResponse.empty()
@@ -23,6 +22,38 @@ final class CityViewModel: ObservableObject {
         didSet {
             refreshWeather()
         }
+    }
+    
+    // Location manager
+    private let locationManager = CLLocationManager()
+    
+    // Initializer
+    override init() {
+        super.init()
+        setupLocationManager()
+        refreshWeather()
+        getLocation()
+    }
+    
+    // Setup location manager
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+
+    // CLLocationManagerDelegate method for location updates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            manager.stopUpdatingLocation()
+            getWeather(coord: location.coordinate)
+        }
+    }
+
+    // CLLocationManagerDelegate method for handling errors
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
     
     func refreshWeather() {
@@ -54,13 +85,7 @@ final class CityViewModel: ObservableObject {
         formatter.dateFormat = "hh a"
         return formatter
     }()
-    
-    // Initializer
-    init() {
-        refreshWeather()
-        getLocation()
-    }
-    
+
     // Computed property to get the date string.
     var date: String {
         return dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.dt)))
@@ -258,5 +283,3 @@ extension CityViewModel {
         }
     }
 }
-
-
